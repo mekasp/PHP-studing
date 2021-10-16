@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="container">
+        <h1><?php echo $article['title']; ?></h1>
+        <br>
+        <img src="<?php echo $article['image'];?>">
+        <p style="font-size: 20px;"><?php echo $article['description']; ?></p>
+        <br>
+        <a href="http://php.local/files/projectx/index.php?route=edit_article&category_name=<?php echo $_GET['category_name']?>&article_name=<?php echo $_GET['article_name']?>">EDIT ARTICLE</a>
+        <br>
+        <a href="http://php.local/files/projectx/index.php?route=delete_article&category_name=<?php echo $_GET['category_name']?>&article_name=<?php echo $_GET['article_name']?>">DELETE ARTICLE</a>
+    </div>
+</div>

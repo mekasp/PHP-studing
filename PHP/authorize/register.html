@@ -1,0 +1,31 @@
+<div class="form">
+    <form method="post" action="registration.php">
+        <div>
+            <p>Email</p>
+            <input type="text" name="email">
+            <?php if (isset($errors['email'])){?>
+            <p class="error"><?php echo $errors['email']?></p>
+            <?php } ?>
+        </div>
+        <div>
+            <p>Name</p>
+            <input type="text" name="name">
+            <?php if (isset($errors['name'])){?>
+            <p class="error"><?php echo $errors['name']?></p>
+            <?php } ?>
+        </div>
+        <div>
+            <p>Password</p>
+            <input type="password" name="password">
+            <?php if (isset($errors['email'])){?>
+            <p class="error"><?php echo $errors['password']?></p>
+            <?php } ?>
+        </div>
+        <div>
+            <p>Password Confim</p>
+            <input type="Password" name="passwordConfirm">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+
+</div>

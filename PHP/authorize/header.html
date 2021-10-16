@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                margin: 0 auto;
+                padding: 0;
+            }
+
+            body {
+                position: absolute;
+                width: 100%;
+            }
+
+            form {
+                position: relative;
+                margin: 30px auto;
+                width: 500px;
+                background-color: antiquewhite;
+                text-align: center;
+            }
+
+            .header {
+                position: relative;
+                width: 100%;
+                background-color: black;
+                padding: 15px 0px;
+            }
+
+            .header a {
+                color: white;
+                margin-right: 15px;
+            }
+
+            c
+
+            .home_page{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="container">
+                    <?php if(!isset($_SESSION['user_id'])){?>
+                        <a href="http://php.local/authorize/index.php?route=login">Login</a>
+                        <a href="http://php.local/authorize/index.php?route=register">Register</a>
+                    <?php }else{?>
+                        <a href="http://php.local/authorize/index.php?route=logout">Logout</a>
+                    <?php }?>
+                </div>
+            </div>

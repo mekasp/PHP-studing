@@ -1,0 +1,19 @@
+<div class="content">
+    <div class="container">
+        <form method="post" action="edit_article.php" enctype="multipart/form-data">
+            <p>TITLE:</p>
+            <input type="text" name="title" value="<?php echo $article['title'];?>">
+            <br>
+            <p>PICTURE OF ARTICLE</p>
+            <input type="file" name="image">
+            <br>
+            <p>DESCRIPTION:</p>
+            <textarea name="description"><?php echo $article['description'];?></textarea>
+            <br>
+            <button type="submit">EDIT</button>
+            <input type="hidden" name="category_name" value="<?php echo $_GET['category_name'];?>">
+            <input type="hidden" name="article_name" value="<?php echo $_GET['article_name'];?>">
+
+        </form>
+    </div>
+</div>

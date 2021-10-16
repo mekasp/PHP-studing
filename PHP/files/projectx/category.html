@@ -1,0 +1,16 @@
+<dic class="content">
+    <div class="container">
+        <h1>Category: <?php echo $_GET['category_name']; ?></h1>
+        <a href="http://php.local/files/projectx/index.php?route=create_article">CREATE NEW ARTICLE</a>
+        <br>
+        <a href="http://php.local/files/projectx/index.php?route=delete_category&category_name=<?php echo $_GET['category_name']?>">DELETE CATEGORY</a>
+        <div class="articles">
+            <?php foreach ($articles as $article){?>
+            <a class="article" href="http://php.local/files/projectx/index.php?route=article&category_name=<?php echo $_GET['category_name'];?>&article_name=<?php echo $article['name'];?>">
+                <p class="title"><?php echo $article['title'];?></p>
+                <p class="description"><?php echo $article['description'];?></p>
+            </a>
+            <?php }?>
+        </div>
+    </div>
+</dic>

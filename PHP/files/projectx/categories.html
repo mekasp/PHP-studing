@@ -1,0 +1,12 @@
+<div class="contant">
+    <div class="container">
+        <h1>CATEGORIES</h1>
+        <a href="http://php.local/files/projectx/index.php?route=create_category">CREATE NEW CATEGORY</a>
+            <div class="categories">
+                <?php foreach($categories as $category){ ?>
+                <a class="category" href="http://php.local/files/projectx/index.php?route=category&category_name=<?php echo $category; ?>"><?php echo $category; ?></a>
+                <?php } ?>
+            </div>
+    </div>
+
+</div>

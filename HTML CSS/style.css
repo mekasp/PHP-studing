@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.wrapper{
+    width: 100%;
+}
+
+.header {
+    position: relative;
+    padding: 15px 0px;
+    text-align: center;
+    width: 100%;
+    color: white;
+    background: black;
+}
+
+.container{
+    position: relative;
+    left: 25%;
+    width: 50%;
+    text-align: center;
+}
+
+.block{
+    position: relative;
+    width: 300px;
+    display: inline-block;
+    margin: 15px;
+    text-align: left;
+}
+.block .border{
+    position: relative;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+.block img {
+    width: 100%;
+}
+
+

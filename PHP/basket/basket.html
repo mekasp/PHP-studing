@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>КОРЗИНА ПОКУПОК</h1>
+    <?php if(isset($basket)){ ?>
+        <?php $total = 0;
+            foreach($basket as $product){
+                $total += $product['price'];
+        ?>
+            <p><?php echo $product['title'] . ' $' . $product['price'];?></p>
+        <hr>
+        <?php }?>
+    <p>Total: <?php echo '$' . $total ?></p>
+    <?php } else { ?>
+    <P>КУПИ ТОВАР,ДУРАК!!!</P>
+    <?php } ?>
+    <form method="post" action="order.php">
+        <input type="text">
+        <br>
+        <input type="text">
+        <br>
+        <button type="submit">CONFIRM</button>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="container">
+        <form method="post" action="create_article.php" enctype="multipart/form-data">
+            <p>SELECT CATEGORY</p>
+            <select name="category">
+                <?php foreach ($categories as $category){?>
+                <option type="<?php echo $category;?>"><?php echo $category; ?></option>
+                <?php }?>
+            </select>
+            <br>
+            <p>NAME:</p>
+            <input type="text" name="name">
+            <br>
+            <p>TITLE:</p>
+            <input type="text" name="title">
+            <br>
+            <p>DESCRIPTION:</p>
+            <textarea name="description"></textarea>
+            <br>
+            <p>PICTURE OF ARTICLE</p>
+            <input type="file" name="image">
+            <br>
+            <button type="submit">SEND</button>
+        </form>
+    </div>
+</div>
