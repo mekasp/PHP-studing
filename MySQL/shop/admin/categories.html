@@ -1,0 +1,13 @@
+<div class="contant">
+    <div class="container">
+        <h1>CATEGORIES</h1>
+        <a href="http://mysql.local/shop/admin/index.php?route=create_category">CREATE NEW CATEGORY</a>
+        <div style="position: relative;">
+            <?php foreach($categories as $category){ ?>
+            <a style="display: block;"><?php echo $category['name']; ?></a>
+            <br>
+            <a class="category"><?php echo $category['description']; ?></a>
+            <?php } ?>
+        </div>
+    </div>
+</div>
