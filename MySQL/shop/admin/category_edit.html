@@ -1,0 +1,10 @@
+<div class="container">
+    <form method="post" action="category_edit.php">
+        <input type="text" name="name" value="<?php echo $category['name'];?>">
+        <br>
+        <textarea name="description"><?php echo $category['description'];?></textarea>
+        <br>
+        <button type="submit">Save Changes</button>
+        <input type="hidden" name="category_id" value="<?php echo $category['id'];?>">
+    </form>
+</div>
