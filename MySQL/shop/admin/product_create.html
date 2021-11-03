@@ -1,0 +1,18 @@
+<div class="container">
+    <form method="post" action="product_create.php">
+        <p>SELECT Product</p>
+        <select name="category_id">
+            <?php foreach ($categories as $category){?>
+            <option value="<?php echo $category['id'];?>"><?php echo $category['name']; ?></option>
+            <?php }?>
+        </select>
+        <br>
+        <p>NAME:</p>
+        <input type="text" name="name">
+        <br>
+        <p>DESCRIPTION:</p>
+        <textarea name="description"></textarea>
+        <br>
+        <button type="submit">SEND</button>
+    </form>
+</div>

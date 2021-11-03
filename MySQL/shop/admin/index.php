@@ -1,11 +1,19 @@
 <?php
 
-if (isset($_GET['route']) && $_GET['route'] == 'categories') {
+if (isset($_GET['route']) && ($_GET['route'] == 'categories' ||  $_GET['route'] == 'product_create' || $_GET['route'] == 'product_edit')) {
     $db = mysqli_connect('localhost', 'root', '', 'shop');
 
     $query = mysqli_query($db, "SELECT * FROM categories;");
 
     $categories = $query->fetch_all(MYSQLI_ASSOC);
+}
+
+if (isset($_GET['route']) && $_GET['route'] == 'products') {
+    $db = mysqli_connect('localhost', 'root', '', 'shop');
+
+    $query = mysqli_query($db, "SELECT * FROM products;");
+
+    $products = $query->fetch_all(MYSQLI_ASSOC);
 }
 
 if (isset($_GET['category_id'])){
@@ -14,6 +22,14 @@ if (isset($_GET['category_id'])){
     $query = mysqli_query($db, "SELECT * FROM categories WHERE id = ". $_GET['category_id'] .";");
 
     $category = $query->fetch_assoc();
+}
+
+if (isset($_GET['product_id'])){
+    $db = mysqli_connect('localhost', 'root', '', 'shop');
+
+    $query = mysqli_query($db, "SELECT * FROM products WHERE id = ". $_GET['product_id'] .";");
+
+    $product = $query->fetch_assoc();
 }
 
 require_once 'header.html';
@@ -28,6 +44,14 @@ if (!isset($_GET['route']) || $_GET['route'] == 'home'){
     require_once 'category_edit.html';
 } elseif (isset($_GET['route']) && $_GET['route'] == 'category_delete'){
     require_once 'category_delete.php';
+} elseif (isset($_GET['route']) && $_GET['route'] == 'products'){
+    require_once 'products.html';
+} elseif (isset($_GET['route']) && $_GET['route'] == 'product_create'){
+    require_once 'product_create.html';
+} elseif (isset($_GET['route']) && $_GET['route'] == 'product_edit'){
+    require_once 'product_edit.html';
+} elseif (isset($_GET['route']) && $_GET['route'] == 'product_delete'){
+    require_once 'product_delete.php';
 }
 
 require_once 'footer.html';
