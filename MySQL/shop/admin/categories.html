@@ -2,23 +2,43 @@
     <div class="container">
         <h1>CATEGORIES</h1>
         <a href="http://mysql.local/shop/admin/index.php?route=create_category">CREATE NEW CATEGORY</a>
-        <table>
-            <thead>
+        <form method="get" style="padding-top: 30px;">
+            <select name="sort">
+                <option value="ASC" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'ASC'){ ?> selected="selected" <?php } ?> >
+                A-Z
+                </option>
+                <option value="DESC" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'DESC'){ ?> selected="selected" <?php } ?> >Z-A</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Action Edit</th>
+                        <th>Action Delete</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <tr>
-                    <th>Category Name</th>
-                    <th>Action Edit</th>
-                    <th>Action Delete</th>
+                    <td>
+                        <input type="text" name="filter" value="<?php if (isset($_GET['filter'])) { echo $_GET['filter']; } ?>">
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <button type="submit">Filter</button>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-            <?php foreach($categories as $category){ ?>
-                <tr>
-                    <td><?php echo $category['name']; ?></td>
-                    <td> <a href="http://mysql.local/shop/admin/index.php?route=category_edit&category_id=<?php echo $category['id']; ?>">edit</a> </td>
-                    <td> <a href="http://mysql.local/shop/admin/index.php?route=category_delete&category_id=<?php echo $category['id']; ?>">delete</a> </td>
-                </tr>
-            <?php } ?>
-            </tbody>
-        </table>
+                <?php foreach($categories as $category){ ?>
+                    <tr>
+                        <td><?php echo $category['name']; ?></td>
+                        <td> <a href="http://mysql.local/shop/admin/index.php?route=category_edit&category_id=<?php echo $category['id']; ?>">edit</a> </td>
+                        <td> <a href="http://mysql.local/shop/admin/index.php?route=category_delete&category_id=<?php echo $category['id']; ?>">delete</a> </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+            <input type="hidden" name="route" value="<?php echo $_GET['route'];?>">
+        </form>
     </div>
 </div>
