@@ -6,7 +6,9 @@ require_once 'controllers/category/category.php';
 
 require_once 'controllers/product/product.php';
 
+
 require_once 'views/header.html';
+
 
 //Routing
 if (!isset($_GET['route']) || $_GET['route'] == 'home'){
