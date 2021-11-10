@@ -40,6 +40,10 @@
         .category {
             display: block;
         }
+        .container p {
+            margin-top: 15px;
+            font-size: large;
+        }
     </style>
 </head>
 <body>
@@ -48,5 +52,15 @@
         <div class="container">
             <a href="http://mysql.local/shop/index.php?route=login">Login</a>
             <a href="http://mysql.local/shop/index.php?route=register">Register</a>
+            <?php if (isset($_SESSION['userid'])){ ?>
+                <a style="float: right; border-radius: 100%; overflow: hidden; width: 35px; height: 35px; margin-bottom: 5px;" href="http://mysql.local/shop/index.php?route=account">
+                <?php if ($user['avatar'] != ''){ ?>
+                    <img src="<?php echo $user['avatar'];?>" style="width: 170%; position: relative;">
+                <?php } else { ?>
+                    <img src="images/avatars/blank.jpg">
+                <?php } ?>
+                </a>
+            <div style="clear: both;"></div>
+            <?php } ?>
         </div>
     </div>

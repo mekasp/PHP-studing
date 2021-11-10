@@ -9,3 +9,4 @@ if ($_POST){
     header('Location: http://mysql.local/shop/index.php?route=login');
 }
 
+if (isset($_SESSION['userid'])){}

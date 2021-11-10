@@ -6,7 +6,6 @@ $db = mysqli_connect('localhost','root','','shop');
 
 if($_POST){
     $query = mysqli_query($db,'SELECT * FROM users WHERE `email` = "' . $_POST['email'] . '" AND `password` = "' . $_POST['password'] . '";');
-    var_dump ($query);
     if($query->num_rows > 0){
         $user = $query->fetch_assoc();
         $_SESSION['userid'] = $user['id'];
