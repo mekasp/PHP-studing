@@ -1,0 +1,13 @@
+<div class="container">
+    <form method="post" action="controllers/auth/account_edit.php" enctype="multipart/form-data">
+        <input type="file" name="avatar">
+        <br>
+        <input type="text" name="name" value="<?php echo $user['name'];?>">
+        <br>
+        <input type="text" name="email" value="<?php echo $user['email'];?>">
+        <br>
+        <input type="text" name="phone" value="<?php echo $user['phone'];?>">
+        <br>
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
