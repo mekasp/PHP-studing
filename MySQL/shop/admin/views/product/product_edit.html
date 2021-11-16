@@ -1,10 +1,30 @@
 <div class="container">
     <form method="post" action="controllers/product/product_edit.php">
-        <input type="text" name="name" value="<?php echo $product['name'];?>">
+        <p>SELECT Product</p>
+        <select name="category_id">
+            <?php foreach ($categories as $category){?>
+                <?php if($category['id'] == $product['category_id']) { ?>
+                    <option selected="selected" value="<?php echo $category['id'];?>"><?php echo $category['name']; ?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $category['id'];?>"><?php echo $category['name']; ?></option>
+                <?php } ?>
+            <?php }?>
+        </select>
         <br>
-        <textarea name="description"><?php echo $product['description'];?></textarea>
+        <?php foreach($product_description as $pd){ ?>
+            <?php if($pd['language_id'] == 1){ ?>
+                <p style="font-weight: bold">РУССОКЕ ОПИСАНИЕ:</p>
+            <?php } else {?>
+                <p style="font-weight: bold">ENGLISH DESCRIPTION:</p>
+            <?php } ?>
+            <input type="text" name="product_description[<?php echo $pd['language_id']; ?>][name]" value="<?php echo $pd['name']; ?>">
+            <textarea name="product_description[<?php echo $pd['language_id']; ?>][description]"><?php echo $pd['description']; ?></textarea>
+        <?php } ?>
         <br>
-        <button type="submit">Save Changes</button>
-        <input type="hidden" name="product_id" value="<?php echo $product['id'];?>">
+        <p style="font-weight: bold">МЕЖДУНАРОДНЫЙ PRICE</p>
+        <input type="text" name="price" value="<?php echo $product['price']; ?>">
+        <br>
+        <button type="submit">SEND</button>
+        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
     </form>
 </div>
