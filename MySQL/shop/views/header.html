@@ -40,6 +40,13 @@
         .category {
             display: block;
         }
+
+        .container {
+            position: relative;
+            margin: 0 auto;
+            width: 1000px;
+        }
+
         .container p {
             margin-top: 15px;
             font-size: large;
@@ -50,9 +57,10 @@
 <div class="wrapper">
     <div class="header">
         <div class="container">
-            <a href="http://mysql.local/shop/index.php?route=login">Login</a>
-            <a href="http://mysql.local/shop/index.php?route=register">Register</a>
-            <?php if (isset($_SESSION['userid'])){ ?>
+            <a href="http://mysql.local/shop/index.php?route=login_form">Login</a>
+            <a href="http://mysql.local/shop/index.php?route=registration_form">Register</a>
+
+            <?php if (isset($_SESSION['user_id'])){ ?>
                 <a style="float: right; border-radius: 100%; overflow: hidden; width: 35px; height: 35px; margin-bottom: 5px;" href="http://mysql.local/shop/index.php?route=account">
                 <?php if ($user['avatar'] != ''){ ?>
                     <img src="<?php echo $user['avatar'];?>" style="width: 170%; position: relative;">
@@ -60,7 +68,7 @@
                     <img src="images/avatars/blank.jpg">
                 <?php } ?>
                 </a>
-            <div style="clear: both;"></div>
+                <div style="clear: both;"></div>
             <?php } ?>
         </div>
     </div>
