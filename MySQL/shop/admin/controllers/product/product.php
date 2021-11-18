@@ -8,7 +8,8 @@ if (isset($_GET['route']) && $_GET['route'] == 'products') {
 
 
 if (isset($_GET['product_id'])){
-    $query = mysqli_query($db, "SELECT * FROM products WHERE id = ". $_GET['product_id'] .";");
-
+    $query = mysqli_query($db, "SELECT p.id,p.category_id,pp.price FROM products p LEFT JOIN product_prices pp ON p.id = pp.product_id WHERE id = ". $_GET['product_id'] .";");
     $product = $query->fetch_assoc();
+    $query = mysqli_query($db,"SELECT * FROM products_description WHERE product_id = " . $_GET['product_id']);
+    $product_description = $query->fetch_all(MYSQLI_ASSOC);
 }
