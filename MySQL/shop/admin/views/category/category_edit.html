@@ -1,10 +1,22 @@
 <div class="container">
     <form method="post" action="controllers/category/category_edit.php">
-        <input type="text" name="name" value="<?php echo $category['name'];?>">
+<!--        <input type="text" name="name" value="<?php echo $category['name'];?>">-->
+<!--        <br>-->
+<!--        <textarea name="description"><?php echo $category['description'];?></textarea>-->
+<!--        <br>-->
+<!--        <button type="submit">Save Changes</button>-->
+<!--        <input type="hidden" name="category_id" value="<?php echo $category['id'];?>">-->
+        <?php foreach($category_description as $cd){ ?>
+        <?php if($cd['language_id'] == 1){ ?>
+        <p style="font-weight: bold">РУССОКЕ ОПИСАНИЕ:</p>
+        <?php } else {?>
+        <p style="font-weight: bold">ENGLISH DESCRIPTION:</p>
+        <?php } ?>
+        <input type="text" name="category_description[<?php echo $cd['language_id']; ?>][name]" value="<?php echo $cd['name']; ?>">
+        <textarea name="category_description[<?php echo $cd['language_id']; ?>][description]"><?php echo $cd['description']; ?></textarea>
+        <?php } ?>
         <br>
-        <textarea name="description"><?php echo $category['description'];?></textarea>
-        <br>
-        <button type="submit">Save Changes</button>
-        <input type="hidden" name="category_id" value="<?php echo $category['id'];?>">
+        <button type="submit">SEND</button>
+        <input type="hidden" name="category_id" value="<?php echo $category['id']; ?>">
     </form>
 </div>

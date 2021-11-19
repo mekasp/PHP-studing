@@ -12,8 +12,9 @@ if ($_POST){
     $category_id = $result['id'];
 
     foreach ($_POST['category_description'] as $language_id => $description){
-        mysqli_query($db,"INSERT INTO category_description SET `category_id` ='" . $category_id . "',`language_id` = '" . $language_id . "', `name` = '" . $description['name'] . "', `description` = '" . $description['description'] . "' `date_added` = now ();");
+        mysqli_query($db,"INSERT INTO category_description SET `category_id` ='" . $category_id . "',`language_id` = '" . $language_id . "', `name` = '" . $description['name'] . "', `description` = '" . $description['description'] . "', `date_added` = now();");
     }
+
 //    $error = mysqli_error();
 //    var_dump($result);
 //    die();
