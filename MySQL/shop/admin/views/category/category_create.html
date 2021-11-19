@@ -1,14 +1,27 @@
 <div class="content">
     <div class="container">
         <form id="form" method="post" action="controllers/category/category_create.php">
-            <a>Create new category<br></a>
-            <p>NAME:</p>
-            <input type="text" name="name">
+<!--            <a>Create new category<br></a>-->
+<!--            <p>NAME:</p>-->
+<!--            <input type="text" name="name">-->
+<!--            <br>-->
+<!--            <p>DESCRIPTION:</p>-->
+<!--            <textarea name="description"></textarea>-->
+<!--            <br>-->
+<!--            <button type="submit">CREATE NEW CATEGORY</button>-->
+            <p style="font-weight: bold">ENGLISH NAME:</p>
+            <input type="text" name="category_description[2][name]">
             <br>
-            <p>DESCRIPTION:</p>
-            <textarea name="description"></textarea>
+            <p style="font-weight: bold">ENGLISH DESCRIPTION:</p>
+            <textarea name="category_description[2][description]"></textarea>
             <br>
-            <button type="submit">CREATE NEW CATEGORY</button>
+            <p style="font-weight: bold">РУССОКЕ ИМЯ:</p>
+            <input type="text" name="category_description[1][name]">
+            <br>
+            <p style="font-weight: bold">РУССОКЕ ОПИСАНИЕ:</p>
+            <textarea name="category_description[1][description]"></textarea>
+            <br>
+            <button type="submit">SEND</button>
         </form>
     </div>
 </div>
