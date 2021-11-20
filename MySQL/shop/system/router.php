@@ -83,9 +83,17 @@ class Router {
         }
 
         if ($_GET['route'] == 'account_edit') {
-            $route['path'] = '.../controllers/account/AccountController.php';
+            $route['path'] = 'controllers/account/AccountController.php';
             $route['class'] = 'AccountController';
             $route['method'] = 'edit';
+
+            return $route;
+        }
+
+        if ($_GET['route'] == 'categories'){
+            $route['path'] = 'controllers/catalog/category.php';
+            $route['class'] = 'Category';
+            $route['method'] = 'index';
 
             return $route;
         }

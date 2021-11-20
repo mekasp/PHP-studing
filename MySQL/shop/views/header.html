@@ -57,9 +57,12 @@
 <div class="wrapper">
     <div class="header">
         <div class="container">
-            <a href="http://mysql.local/shop/index.php?route=login_form">Login</a>
-            <a href="http://mysql.local/shop/index.php?route=registration_form">Register</a>
-
+            <?php if(!isset($_SESSION['user_id'])){ ?>
+                <a href="http://mysql.local/shop/index.php?route=login_form">Login</a>
+                <a href="http://mysql.local/shop/index.php?route=registration_form">Register</a>
+            <?php } else { ?>
+                <a href="http://mysql.local/shop/index.php?route=categories">Categories</a>
+            <?php } ?>
             <?php if (isset($_SESSION['user_id'])){ ?>
                 <a style="float: right; border-radius: 100%; overflow: hidden; width: 35px; height: 35px; margin-bottom: 5px;" href="http://mysql.local/shop/index.php?route=account">
                 <?php if ($user['avatar'] != ''){ ?>

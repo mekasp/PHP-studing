@@ -4,7 +4,7 @@ class Layout {
 
     private $viewPath = 'views/';
 
-    public $data;
+    public $data = [];
 
     public function render($template, $data = array()){
         $data = array_merge($this->data, $data);
