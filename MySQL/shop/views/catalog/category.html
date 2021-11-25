@@ -1,0 +1,10 @@
+<div class="container">
+    <H1><?php echo $category['name']; ?></H1>
+    <?php foreach($products as $product) { ?>
+    <a href="http://mysql.local/shop/index.php?route=product&product_id=<?php echo $product['id'] ?>" class="products">
+        <p><?php echo $product['name'] ?></p>
+        <p><?php echo $product['description'] ?></p>
+        <p><?php echo $product['price'] ?></p>
+    <?php } ?>
+    </a>
+</div>

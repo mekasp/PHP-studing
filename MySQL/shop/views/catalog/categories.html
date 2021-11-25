@@ -1,7 +1,7 @@
 <div class="container">
     <div class="categories">
         <?php foreach ($categories as $category) { ?>
-        <a class="category"><?php echo $category['name'] ?></a>
+        <a class="category" href="http://mysql.local/shop/index.php?route=category&category_id=<?php echo $category['id']; ?>"><?php echo $category['name'] ?></a>
         <?php } ?>
     </div>
 </div>

@@ -98,6 +98,23 @@ class Router {
             return $route;
         }
 
+        if ($_GET['route'] == 'category'){
+            $route['path'] = 'controllers/catalog/category.php';
+            $route['class'] = 'Category';
+            $route['method'] = 'getCategory';
+
+            return $route;
+        }
+
+        if ($_GET['route'] == 'product'){
+            $route['path'] = 'controllers/catalog/product.php';
+            $route['class'] = 'Product';
+            $route['method'] = 'getProduct';
+
+            return $route;
+        }
+
+
         return $route;
     }
 }
