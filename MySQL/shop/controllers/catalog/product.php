@@ -9,4 +9,12 @@ class Product extends Controller {
         );
 
     }
+
+    public function Buy() {
+        $_SESSION['order'][] = $_GET['product_id'];
+
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+    }
 }

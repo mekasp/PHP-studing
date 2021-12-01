@@ -114,6 +114,14 @@ class Router {
             return $route;
         }
 
+        if ($_GET['route'] == 'buy_product'){
+            $route['path'] = 'controllers/catalog/product.php';
+            $route['class'] = 'Product';
+            $route['method'] = 'Buy';
+
+            return $route;
+        }
+
 
         return $route;
     }
