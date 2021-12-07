@@ -1,0 +1,42 @@
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Count</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($products as $product){ ?>
+        <tr>
+            <td><?php echo $product['name'];?></td>
+            <td><?php echo $product['price'];?></td>
+            <td><?php echo $product['count'];?></td>
+            <td><?php echo $product['total'];?></td>
+        </tr>
+        <?php } ?>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="http://mysql.local/shop/index.php?route=clear_basket">Delete all from basket</a>
+    <form method="post">
+        <h1>Create order</h1>
+        <p>Name</p>
+        <input type="text" name="name">
+        <br>
+        <p>Phone</p>
+        <input type="text" name="phone">
+        <br>
+        <p>Address</p>
+        <input type="text" name="address">
+        <br>
+        <button type="submit">Apply</button>
+
+    </form>
+</div>

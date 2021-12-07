@@ -122,6 +122,22 @@ class Router {
             return $route;
         }
 
+        if ($_GET['route'] == 'basket'){
+            $route['path'] = 'controllers/catalog/basket.php';
+            $route['class'] = 'Basket';
+            $route['method'] = 'index';
+
+            return $route;
+        }
+
+        if ($_GET['route'] == 'clear_basket'){
+            $route['path'] = 'controllers/catalog/basket.php';
+            $route['class'] = 'Basket';
+            $route['method'] = 'Clear_Basket';
+
+            return $route;
+        }
+
 
         return $route;
     }

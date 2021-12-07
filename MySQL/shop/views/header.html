@@ -54,6 +54,7 @@
             font-size: large;
         }
     </style>
+    <script src="https://kit.fontawesome.com/041bbd291d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -65,15 +66,22 @@
             <?php } else { ?>
                 <a href="http://mysql.local/shop/index.php?route=categories">Categories</a>
             <?php } ?>
+
             <?php if (isset($_SESSION['user_id'])){ ?>
-                <a style="float: right; border-radius: 100%; overflow: hidden; width: 35px; height: 35px; margin-bottom: 5px;" href="http://mysql.local/shop/index.php?route=account">
+            <a href="http://mysql.local/shop/index.php?route=basket" style="float: right;">
+                <div style="position: absolute; background-color: grey; border-radius: 100%; right: 8px; bottom: 17px;"><?php echo count($_SESSION['order']); ?></div>
+                <i  class="fa fa-shopping-basket" style="color: white; font-size: 30px;"></i>
+            </a>
+
+                <!--<a style="float: right; border-radius: 100%; overflow: hidden; width: 35px; height: 35px; margin-bottom: 5px;" href="http://mysql.local/shop/index.php?route=account">
                 <?php if ($user['avatar'] != ''){ ?>
                     <img src="<?php echo $user['avatar'];?>" style="width: 170%; position: relative;">
                 <?php } else { ?>
                     <img src="images/avatars/blank.jpg">
                 <?php } ?>
-                </a>
+                </a>-->
                 <div style="clear: both;"></div>
             <?php } ?>
+
         </div>
     </div>
