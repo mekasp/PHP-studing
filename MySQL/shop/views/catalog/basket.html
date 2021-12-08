@@ -21,14 +21,15 @@
             <td></td>
             <td></td>
             <td></td>
+            <td><?php echo $total ?></td>
         </tr>
         </tbody>
     </table>
     <a href="http://mysql.local/shop/index.php?route=clear_basket">Delete all from basket</a>
-    <form method="post">
+    <form method="post" action="http://mysql.local/shop/index.php?route=create_order">
         <h1>Create order</h1>
-        <p>Name</p>
-        <input type="text" name="name">
+        <p>Email</p>
+        <input type="text" name="email">
         <br>
         <p>Phone</p>
         <input type="text" name="phone">
@@ -37,6 +38,5 @@
         <input type="text" name="address">
         <br>
         <button type="submit">Apply</button>
-
     </form>
 </div>

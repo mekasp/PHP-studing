@@ -138,6 +138,22 @@ class Router {
             return $route;
         }
 
+        if ($_GET['route'] == 'create_order'){
+            $route['path'] = 'controllers/catalog/basket.php';
+            $route['class'] = 'Basket';
+            $route['method'] = 'Create_Order';
+
+            return $route;
+        }
+
+        if ($_GET['route'] == 'order_success'){
+            $route['path'] = 'controllers/catalog/basket.php';
+            $route['class'] = 'Basket';
+            $route['method'] = 'Order_Success';
+
+            return $route;
+        }
+
 
         return $route;
     }
