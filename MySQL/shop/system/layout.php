@@ -4,6 +4,8 @@ class Layout {
 
     private $viewPath = 'views/';
 
+    private $viewAdminPath = 'admin/views/';
+
     public $data = [];
 
     public function render($template, $data = array()){

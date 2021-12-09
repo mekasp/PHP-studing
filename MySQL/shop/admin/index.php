@@ -1,25 +1,27 @@
 <?php
+session_start();
 
-$db = mysqli_connect('localhost', 'root', '', 'shop');
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'shop');
+define('ACTION', 'admin');
 
-require_once 'controllers/category/category.php';
+require_once '../system/controller.php';
 
-require_once 'controllers/product/product.php';
+require_once '../system/router.php';
 
+require_once '../system/db.php';
 
-require_once 'views/header.html';
+require_once '../system/auth.php';
 
+require_once '../system/layout.php';
+
+$router = new Router();
+$router->route();
 
 //Routing
-if (!isset($_GET['route']) || $_GET['route'] == 'home'){
-
-    require_once('views/home.html');
-
-} elseif (isset($_GET['route']) && $_GET['route'] == 'categories') {
-
-    require_once('views/category/categories.html');
-
-} elseif (isset($_GET['route']) && $_GET['route'] == 'create_category') {
+if (isset($_GET['route']) && $_GET['route'] == 'create_category') {
 
     require_once('views/category/category_create.html');
 
