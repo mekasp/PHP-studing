@@ -3,7 +3,14 @@
 class AccountController extends Controller {
 
     public function index(){
-        $this->layout->render('account/account.html');
+        $result = $this->db->query("SELECT * FROM `order` WHERE user_id = '" . $_SESSION['user_id'] . "';");
+        $orders = $result['result']->fetch_all(MYSQLI_ASSOC);
+
+        $this->layout->render('account/account.html',
+            [
+                'orders' => $orders
+            ]
+        );
     }
 
     public function edit(){
@@ -18,9 +25,9 @@ class AccountController extends Controller {
                 $path = "images/avatars/" . $_FILES['avatar']['name'];
                 $loaded = move_uploaded_file($_FILES['avatar']['tmp_name'],$path);
                 if ($loaded){
-                    $this->db->query("DELETE FROM user_images WHERE `user_id` ='" . $_SESSION['userid'] . "'");
+                    $this->db->query("DELETE FROM user_images WHERE `user_id` ='" . $_SESSION['user_id'] . "'");
 
-                    $this->db->query("INSERT INTO user_images SET `user_id` ='" . $_SESSION['userid'] . "', avatar_path ='" . $path . "',date_added = NOW()");
+                    $this->db->query("INSERT INTO user_images SET `user_id` ='" . $_SESSION['user_id'] . "', avatar_path ='" . $path . "',date_added = NOW()");
                 }
             }
         }

@@ -90,6 +90,14 @@ class Router {
             return $route;
         }
 
+        if ($_GET['route'] == 'account_update') {
+            $route['path'] = 'controllers/account/AccountController.php';
+            $route['class'] = 'AccountController';
+            $route['method'] = 'update';
+
+            return $route;
+        }
+
         if ($_GET['route'] == 'categories'){
             $route['path'] = 'controllers/catalog/category.php';
             $route['class'] = 'Category';

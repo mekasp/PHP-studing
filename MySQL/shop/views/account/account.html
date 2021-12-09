@@ -1,9 +1,25 @@
 <div class="container">
     <a href="http://mysql.local/shop/index.php?route=account_edit" style="padding: 15px;">EDIT</a>
     <div class="info" style="    margin-top: 15px;">
-        <img src="<?php echo $user['avatar'];?>" style="width: 100px">
+        <img src="<?php echo $user['avatar_path'];?>" style="width: 100px">
         <p><?php echo $user['name']; ?></p>
         <p><?php echo $user['email']; ?></p>
         <p><?php echo $user['phone']; ?></p>
     </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Order number</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($orders as $order) { ?>
+        <tr>
+            <td><?php echo $order['id']; ?></td>
+            <td><?php echo $order['total']; ?></td>
+        </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>
