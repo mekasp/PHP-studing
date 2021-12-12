@@ -1,11 +1,5 @@
 <div class="container">
-    <form method="post" action="controllers/category/category_edit.php">
-<!--        <input type="text" name="name" value="<?php echo $category['name'];?>">-->
-<!--        <br>-->
-<!--        <textarea name="description"><?php echo $category['description'];?></textarea>-->
-<!--        <br>-->
-<!--        <button type="submit">Save Changes</button>-->
-<!--        <input type="hidden" name="category_id" value="<?php echo $category['id'];?>">-->
+    <form method="post" action="http://mysql.local/shop/admin/index.php?route=category_edit_submit">
         <?php foreach($category_description as $cd){ ?>
         <?php if($cd['language_id'] == 1){ ?>
         <p style="font-weight: bold">РУССОКЕ ОПИСАНИЕ:</p>

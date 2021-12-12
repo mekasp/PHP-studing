@@ -181,6 +181,94 @@ class Router {
                 return $route;
             }
 
+            if ($_GET['route'] == 'create_category'){
+                $route['path'] = 'controllers/category/CategoryController.php';
+                $route['class'] = 'CategoryController';
+                $route['method'] = 'CreateCategoryPage';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'create_category_submit'){
+                $route['path'] = 'controllers/category/CategoryController.php';
+                $route['class'] = 'CategoryController';
+                $route['method'] = 'CreateCategory';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'category_edit'){
+                $route['path'] = 'controllers/category/CategoryController.php';
+                $route['class'] = 'CategoryController';
+                $route['method'] = 'EditCategoryPage';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'category_edit_submit'){
+                $route['path'] = 'controllers/category/CategoryController.php';
+                $route['class'] = 'CategoryController';
+                $route['method'] = 'EditCategory';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'category_delete'){
+                $route['path'] = 'controllers/category/CategoryController.php';
+                $route['class'] = 'CategoryController';
+                $route['method'] = 'DeleteCategory';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'products'){
+                $route['path'] = 'controllers/product/ProductController.php';
+                $route['class'] = 'ProductController';
+                $route['method'] = 'index';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'product_create'){
+                $route['path'] = 'controllers/product/ProductController.php';
+                $route['class'] = 'ProductController';
+                $route['method'] = 'CreateProductPage';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'product_create_submit'){
+                $route['path'] = 'controllers/product/ProductController.php';
+                $route['class'] = 'ProductController';
+                $route['method'] = 'CreateProduct';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'product_edit'){
+                $route['path'] = 'controllers/product/ProductController.php';
+                $route['class'] = 'ProductController';
+                $route['method'] = 'EditProductPage';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'product_edit_submit'){
+                $route['path'] = 'controllers/product/ProductController.php';
+                $route['class'] = 'ProductController';
+                $route['method'] = 'EditProduct';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'product_delete'){
+                $route['path'] = 'controllers/product/ProductController.php';
+                $route['class'] = 'ProductController';
+                $route['method'] = 'DeleteProduct';
+
+                return $route;
+            }
+
         }
 
         return $route;
