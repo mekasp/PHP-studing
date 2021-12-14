@@ -33,6 +33,8 @@ class ProductController extends Controller{
     }
 
     public function CreateProduct(){
+
+
         if ($_POST){
             $this->db->query('INSERT INTO products SET category_id = "' . $_POST['category_id'] . '" ;');
 
@@ -44,6 +46,14 @@ class ProductController extends Controller{
 
             foreach ($_POST['product_description'] as $language_id => $description){
                 $this->db->query("INSERT INTO products_description SET `product_id` ='" . $product_id . "',`language_id` = '" . $language_id . "', `name` = '" . $description['name'] . "', `description` = '" . $description['description'] . "';");
+            }
+        }
+
+        if ($_FILES){
+            $path = "images/products/" . $_FILES['product_image']['name'];
+            $loaded = move_uploaded_file($_FILES['product_image']['tmp_name'],"../" . $path);
+            if ($loaded){
+                $this->db->query("INSERT INTO product_images SET `product_id` ='" . $product_id . "', image_path ='" . $path . "';");
             }
         }
 
@@ -85,6 +95,15 @@ class ProductController extends Controller{
             $this->db->query("UPDATE product_prices SET `price` ='" . $_POST['price'] . "' WHERE `product_id` = '" . $_POST['product_id'] ."';");
         }
 
+        if ($_FILES){
+            $path = "images/products/" . $_FILES['product_image']['name'];
+            $loaded = move_uploaded_file($_FILES['product_image']['tmp_name'],"../" . $path);
+            if ($loaded){
+                $this->db->query("DELETE FROM product_images SET `product_id` = '" . $_POST['product_id'] . "';");
+                $this->db->query("INSERT INTO product_images SET `product_id` ='" . $_POST['product_id'] . "', image_path ='" . $path . "';");
+            }
+        }
+
         header('Location: http://mysql.local/shop/admin/index.php?route=products');
 
     }
@@ -93,7 +112,9 @@ class ProductController extends Controller{
         if (isset($_GET['product_id'])){
             $this->db->query( "DELETE FROM products WHERE `id` = '" . $_GET['product_id'] ."';");
             $this->db->query("DELETE FROM products_description WHERE `product_id` = '" . $_GET['product_id'] ."';");
+            $this->db->query("DELETE FROM product_images WHERE `product_id` = '" . $_GET['product_id'] . "';");
         }
+
 
         header('Location: http://mysql.local/shop/admin/index.php?route=products');
 

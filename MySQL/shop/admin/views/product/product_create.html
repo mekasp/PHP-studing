@@ -1,11 +1,14 @@
 <div class="container">
-    <form method="post" action="http://mysql.local/shop/admin/index.php?route=product_create_submit">
+    <form method="post" action="http://mysql.local/shop/admin/index.php?route=product_create_submit" enctype="multipart/form-data">
         <p>SELECT Product</p>
+
         <select name="category_id">
             <?php foreach ($categories as $category){?>
             <option value="<?php echo $category['id'];?>"><?php echo $category['name']; ?></option>
             <?php }?>
         </select>
+        <br>
+        <input type="file" name="product_image">
         <br>
         <p style="font-weight: bold">ENGLISH NAME:</p>
         <input type="text" name="product_description[2][name]">

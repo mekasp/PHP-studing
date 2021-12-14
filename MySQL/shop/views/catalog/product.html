@@ -2,5 +2,7 @@
     <h1><?php echo $product['name']; ?></h1>
     <p><?php echo $product['description']; ?></p>
     <p>price: <?php echo $product['price']; ?></p>
+    <img src="<?php echo $product['image_path']; ?>" style=" width: 150px;">
+    <br>
     <a href="http://mysql.local/shop/index.php?route=buy_product&product_id=<?php echo $product['id'] ?>">Buy</a>
 </div>
