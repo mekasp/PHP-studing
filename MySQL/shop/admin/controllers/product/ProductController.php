@@ -36,7 +36,7 @@ class ProductController extends Controller{
 
 
         if ($_POST){
-            $this->db->query('INSERT INTO products SET category_id = "' . $_POST['category_id'] . '" ;');
+            $this->db->query('INSERT INTO products SET category_id = "' . $_POST['category_id'] . '", date_created = NOW() ;');
 
             $query = $this->db->query("SELECT max(id) AS product_id FROM products");
             $result = $query['result']->fetch_assoc();
