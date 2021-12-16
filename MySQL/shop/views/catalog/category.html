@@ -1,13 +1,16 @@
 <div class="container">
     <H1><?php echo $category['name']; ?></H1>
-    <?php foreach($products as $product) { ?>
-    <a href="http://mysql.local/shop/index.php?route=product&product_id=<?php echo $product['id'] ?>" class="products">
-        <p><?php echo $product['name'] ?></p>
-        <p><?php echo $product['description'] ?></p>
-        <p><?php echo $product['price'] ?></p>
-        <img src="<?php echo $product['image_path']; ?>" style=" width: 150px;">
-        <br>
-        <a href="http://mysql.local/shop/index.php?route=buy_product&product_id=<?php echo $product['id'] ?>">Buy</a>
-    <?php } ?>
-    </a>
+    <div style="display: flex; ">
+        <?php foreach($products as $product) { ?>
+            <div style="border: 1px solid black;">
+                <a href="http://mysql.local/shop/index.php?route=product&product_id=<?php echo $product['id'] ?>" class="products" >
+                    <p><?php echo $product['name'] ?></p>
+                    <img src="<?php echo $product['image_path']; ?>" style=" width: 150px;">
+                    <p><?php echo $product['description'] ?></p>
+                    <p><?php echo $product['price'] ?></p>
+                </a>
+                <a href="http://mysql.local/shop/index.php?route=buy_product&product_id=<?php echo $product['id'] ?>" style="display: block;">Buy</a>
+            </div>
+        <?php } ?>
+    </div>
 </div>

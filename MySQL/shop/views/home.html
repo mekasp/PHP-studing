@@ -1,8 +1,22 @@
 <div class="container">
+    <h1 style="text-align: center">POPULAR PRODUCTS</h1>
+    <div class="popularProducts" style="display:flex;">
+        <?php foreach($PopProducts as $product){ ?>
+            <div class="products" style="border: 1px solid black;">
+                <a href="http://mysql.local/shop/index.php?route=product&product_id=<?php echo $product['id'] ?>"><?php echo $product['name'];?></a>
+                <br>
+                <img src="<?php echo $product['image_path']; ?>" style="width: 150px;" >
+                <br>
+                <p><?php echo $product['price'];?></p>
+                <br>
+                <a href="http://mysql.local/shop/index.php?route=buy_product&product_id=<?php echo $product['id'] ?>">Buy</a>
+            </div>
+        <?php } ?>
+    </div>
     <h1 style="text-align: center">NEW PRODUCTS</h1>
     <div class="products" style="display:flex;">
-        <?php foreach($products as $product){ ?>
-            <div class="product">
+        <?php foreach($NewProducts as $product){ ?>
+            <div class="product" style="border: 1px solid black;">
                     <a href="http://mysql.local/shop/index.php?route=product&product_id=<?php echo $product['id'] ?>"><?php echo $product['name'];?></a>
                     <br>
                     <img src="<?php echo $product['image_path']; ?>" style="width: 150px;" >
