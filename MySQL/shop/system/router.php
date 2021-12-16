@@ -269,6 +269,30 @@ class Router {
                 return $route;
             }
 
+            if ($_GET['route'] == 'articles'){
+                $route['path'] = 'controllers/articles/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'index';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'article_create'){
+                $route['path'] = 'controllers/articles/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'CreateArticlePage';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'article_create_submit'){
+                $route['path'] = 'controllers/articles/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'CreateArticle';
+
+                return $route;
+            }
+
         }
 
         return $route;

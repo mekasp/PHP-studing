@@ -21,13 +21,9 @@ class ProductController extends Controller{
 
         $categories = $result['result']->fetch_all(MYSQLI_ASSOC);
 
-
-
-
-
         $this->layout->render('product/product_create.html',
         [
-            'categories' => $categories,
+            'categories' => $categories
         ]
         );
     }
