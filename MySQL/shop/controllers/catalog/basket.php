@@ -2,18 +2,19 @@
 
  class Basket extends Controller {
      public function index() {
-         $ids = implode(',', array_keys($_SESSION['order']));
-         $result = $this->db->query("SELECT p.id,pd.name,pp.price FROM products p LEFT JOIN products_description pd ON p.id = pd.product_id LEFT JOIN product_prices pp ON p.id = pp.product_id WHERE p.id IN (" . $ids . ") AND pd.language_id = 2; ");
-         $products = $result['result']->fetch_all(MYSQLI_ASSOC);
-
+         $products = [];
          $total = 0;
+         if($_SESSION['order']){
+             $ids = implode(',', array_keys($_SESSION['order']));
+             $result = $this->db->query("SELECT p.id,pd.name,pp.price FROM products p LEFT JOIN products_description pd ON p.id = pd.product_id LEFT JOIN product_prices pp ON p.id = pp.product_id WHERE p.id IN (" . $ids . ") AND pd.language_id = 2; ");
+             $products = $result['result']->fetch_all(MYSQLI_ASSOC);
 
-         foreach ($products as $key => $product){
-             $products[$key]['count'] = $_SESSION['order'][$product['id']];
-             $products[$key]['total'] = $product['price'] * $_SESSION['order'][$product['id']];
-             $total += $products[$key]['total'];
+             foreach ($products as $key => $product){
+                 $products[$key]['count'] = $_SESSION['order'][$product['id']];
+                 $products[$key]['total'] = $product['price'] * $_SESSION['order'][$product['id']];
+                 $total += $products[$key]['total'];
+             }
          }
-
          $this->layout->render('catalog/basket.html',
              ['products' => $products, 'total' => $total ]
          );
