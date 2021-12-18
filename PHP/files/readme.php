@@ -56,7 +56,7 @@
 setcookie('имя куки','значение,которое хранится в куки(string)','время в формате unix')
 */
 //if (!isset($_COOKIE['name'])){
-//    setcookie('name',1,time() + 3600);
+//    setcookie('name',1,time() + 3600);w3
 //}
 //$_COOKIE['name']++;
 //setcookie('name',$_COOKIE['name'],time() + 3600);

@@ -11,12 +11,20 @@ class Product extends Controller {
     }
 
     public function Buy() {
-
-        If (isset( $_SESSION['order'][$_GET['product_id']] )) {
-            $_SESSION['order'][$_GET['product_id']] ++;
+        if (isset($_COOKIE['order'])){
+            $order = json_decode($_COOKIE['order'],1);
         } else {
-            $_SESSION['order'][$_GET['product_id']] = 1;
+            $order = [];
         }
+
+        If (isset( $order[$_GET['product_id']] )) {
+            $order[$_GET['product_id']] ++;
+        } else {
+            $order[$_GET['product_id']] = 1;
+        }
+
+        setcookie('order',json_encode($order),time() + 3600 * 24 * 30);
+
 
         if(isset($_SERVER['HTTP_REFERER'])) {
             header('Location: ' . $_SERVER['HTTP_REFERER']);

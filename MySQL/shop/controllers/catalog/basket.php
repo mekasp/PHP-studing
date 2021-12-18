@@ -4,14 +4,20 @@
      public function index() {
          $products = [];
          $total = 0;
-         if($_SESSION['order']){
-             $ids = implode(',', array_keys($_SESSION['order']));
+         if (isset($_COOKIE['order'])){
+             $order = json_decode($_COOKIE['order'],1);
+         } else {
+             $order = [];
+         }
+
+         if($order){
+             $ids = implode(',', array_keys($order));
              $result = $this->db->query("SELECT p.id,pd.name,pp.price FROM products p LEFT JOIN products_description pd ON p.id = pd.product_id LEFT JOIN product_prices pp ON p.id = pp.product_id WHERE p.id IN (" . $ids . ") AND pd.language_id = 2; ");
              $products = $result['result']->fetch_all(MYSQLI_ASSOC);
 
              foreach ($products as $key => $product){
-                 $products[$key]['count'] = $_SESSION['order'][$product['id']];
-                 $products[$key]['total'] = $product['price'] * $_SESSION['order'][$product['id']];
+                 $products[$key]['count'] = $order[$product['id']];
+                 $products[$key]['total'] = $product['price'] * $order[$product['id']];
                  $total += $products[$key]['total'];
              }
          }
@@ -21,21 +27,26 @@
      }
 
      public function Clear_Basket(){
-         $_SESSION['order'] = [];
+         setcookie('order','',time() - 1);
 
          header('Location: http://mysql.local/shop/index.php');
      }
 
      public function Create_Order(){
+         if (isset($_COOKIE['order'])){
+             $order = json_decode($_COOKIE['order'],1);
+         } else {
+             $order = [];
+         }
 
-         $ids = implode(',', array_keys($_SESSION['order']));
+         $ids = implode(',', array_keys($order));
          $result = $this->db->query("SELECT p.id,pd.name,pp.price FROM products p LEFT JOIN products_description pd ON p.id = pd.product_id LEFT JOIN product_prices pp ON p.id = pp.product_id WHERE p.id IN (" . $ids . ") AND pd.language_id = 2; ");
          $products = $result['result']->fetch_all(MYSQLI_ASSOC);
 
          if ($_POST){
              $total = 0;
              foreach ($products as $key => $product){
-                 $total +=  $product['price'] * $_SESSION['order'][$product['id']];
+                 $total +=  $product['price'] * $order[$product['id']];
              }
              $this->db->query('INSERT INTO `order` SET user_id = "' . $_SESSION['user_id'] . '", total = "' . $total . '", email = "' . $_POST['email'] . '", phone = "' . $_POST['phone'] . '", address = "' . $_POST['address'] . '";');
 
@@ -47,7 +58,7 @@
              $this->db->query('INSERT INTO order_product SET order_id = "' . $order_id . '", product_id = "' . $product['id'] . '";');
              }
 
-             $_SESSION['order'] = [];
+             setcookie('order','',time() - 1);
 
              header('Location: http://mysql.local/shop/index.php?route=order_success');
          }
