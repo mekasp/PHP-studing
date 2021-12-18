@@ -161,6 +161,22 @@ class Router {
 
                 return $route;
             }
+
+            if ($_GET['route'] == 'articles'){
+                $route['path'] = 'controllers/catalog/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'index';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'article'){
+                $route['path'] = 'controllers/catalog/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'getArticle';
+
+                return $route;
+            }
         }
 
         if (ACTION == 'admin'){
@@ -289,6 +305,30 @@ class Router {
                 $route['path'] = 'controllers/articles/ArticlesController.php';
                 $route['class'] = 'ArticlesController';
                 $route['method'] = 'CreateArticle';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'article_edit'){
+                $route['path'] = 'controllers/articles/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'EditArticlePage';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'article_edit_submit'){
+                $route['path'] = 'controllers/articles/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'EditArticle';
+
+                return $route;
+            }
+
+            if ($_GET['route'] == 'article_delete'){
+                $route['path'] = 'controllers/articles/ArticlesController.php';
+                $route['class'] = 'ArticlesController';
+                $route['method'] = 'DeleteArticle';
 
                 return $route;
             }

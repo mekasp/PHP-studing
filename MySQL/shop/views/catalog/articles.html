@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>ARTICLES</h1>
+    <div style="display: flex; ">
+        <?php foreach($articles as $article) { ?>
+        <div style="border: 1px solid black;">
+            <a href="http://mysql.local/shop/index.php?route=article&article_id=<?php echo $article['id'] ?>" class="products" >
+                <p><?php echo $article['title'] ?></p>
+                <img src="<?php echo $article['image_path']; ?>" style=" width: 150px;">
+            </a>
+        </div>
+        <?php } ?>
+    </div>
+</div>

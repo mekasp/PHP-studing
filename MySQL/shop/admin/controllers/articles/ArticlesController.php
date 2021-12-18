@@ -51,4 +51,54 @@ Class ArticlesController extends Controller {
 
         header("location: http://mysql.local/shop/admin/index.php?route=articles");
     }
+
+    public function EditArticlePage(){
+
+        if (isset($_GET['article_id'])){
+
+            $query = $this->db->query("SELECT * FROM article_description WHERE article_id = " . $_GET['article_id']);
+            $article_description = $query['result']->fetch_all(MYSQLI_ASSOC);
+        }
+
+        $this->layout->render('articles/articles_edit.html',
+            [
+                'article_description' => $article_description
+            ]
+        );
+
+    }
+
+    public function EditArticle(){
+        if ($_POST){
+
+            foreach ($_POST['article_description'] as $language_id => $description){
+                $query = $this->db->query("UPDATE article_description SET `title` = '" . $description['title'] ."' ,`description` = '" . $description['description'] . "' WHERE `article_id` = '" . $_POST['article_id'] . "' AND `language_id` = '" . $language_id . "';");
+            }
+
+        }
+
+        if ($_FILES){
+            $path = "images/articles/" . $_FILES['article_image']['name'];
+            $loaded = move_uploaded_file($_FILES['article_image']['tmp_name'],"../" . $path);
+            if ($loaded){
+                $this->db->query("DELETE FROM article_images SET `article_id` = '" . $_POST['article_id'] . "';");
+                $this->db->query("INSERT INTO article_images SET `article_id` ='" . $_POST['article_id'] . "', image_path ='" . $path . "';");
+            }
+        }
+
+        header('Location: http://mysql.local/shop/admin/index.php?route=articles');
+
+    }
+
+    public function DeleteArticle(){
+        if (isset($_GET['article_id'])){
+            $this->db->query( "DELETE FROM article WHERE `id` = '" . $_GET['article_id'] ."';");
+            $this->db->query("DELETE FROM article_description WHERE `article_id` = '" . $_GET['article_id'] ."';");
+            $this->db->query("DELETE FROM article_images WHERE `article_id` = '" . $_GET['article_id'] . "';");
+        }
+
+
+        header('Location: http://mysql.local/shop/admin/index.php?route=articles');
+
+    }
 }

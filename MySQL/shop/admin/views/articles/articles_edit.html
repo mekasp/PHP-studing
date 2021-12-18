@@ -1,0 +1,18 @@
+<div class="container">
+    <form method="post" action="http://mysql.local/shop/admin/index.php?route=article_edit_submit" enctype="multipart/form-data">
+        <input type="file" name="article_image">
+        <br>
+        <?php foreach($article_description as $ad){ ?>
+        <?php if($ad['language_id'] == 1){ ?>
+        <p style="font-weight: bold">РУССОКЕ ОПИСАНИЕ:</p>
+        <?php } else {?>
+        <p style="font-weight: bold">ENGLISH DESCRIPTION:</p>
+        <?php } ?>
+        <input type="text" name="article_description[<?php echo $ad['language_id']; ?>][title]" value="<?php echo $ad['title']; ?>">
+        <textarea name="article_description[<?php echo $ad['language_id']; ?>][description]"><?php echo $ad['description']; ?></textarea>
+        <?php } ?>
+        <br>
+        <button type="submit">SEND</button>
+        <input type="hidden" name="article_id" value="<?php echo $_GET['article_id']; ?>">
+    </form>
+</div>

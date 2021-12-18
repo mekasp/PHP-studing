@@ -12,8 +12,8 @@
         <?php foreach($articles as $article){ ?>
         <tr>
             <td><?php echo $article['title']; ?></td>
-<!--            <td> <a href="http://mysql.local/shop/admin/index.php?route=product_edit&product_id=<?php echo $product['id']; ?>">edit</a> </td>-->
-<!--            <td> <a href="http://mysql.local/shop/admin/index.php?route=product_delete&product_id=<?php echo $product['id']; ?>">delete</a> </td>-->
+            <td> <a href="http://mysql.local/shop/admin/index.php?route=article_edit&article_id=<?php echo $article['id']; ?>">edit</a> </td>
+            <td> <a href="http://mysql.local/shop/admin/index.php?route=article_delete&article_id=<?php echo $article['id']; ?>">delete</a> </td>
         </tr>
         <?php } ?>
         </tbody>
