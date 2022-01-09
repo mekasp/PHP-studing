@@ -45,10 +45,10 @@ $users = $query->fetch_all(MYSQLI_ASSOC); фетчим данные с запр�
 Запросы к таблицам MySQL:
     INSERT INTO table_name SET column_name = 1;
     INSERT INTO table_name (column_name,column_name) VALUES ('hello',1),('hi',2);
-    UPDATE table_name SET column_name = 1
+    UPDATE table_name SET column_name = 1;
     UPDATE table_name SET column_name = 1 WHERE column_name = 2
-    DELETE FROM table_name SET column_name = 1
-    DELETE FROM table_name SET column_name = 1 WHERE column_name = 2
+    DELETE FROM table_name
+    DELETE FROM table_name WHERE column_name = 2
 
     Запросы на выборку данных:
         SELECT * FROM table_name
@@ -56,7 +56,7 @@ $users = $query->fetch_all(MYSQLI_ASSOC); фетчим данные с запр�
         SELECT * FROM table_name WHERE column_name = 1
 
         Назначение кличек:
-            SELECT column_name AS alias_name FROM table_name alias_name
+            SELECT column_name AS alias_name, COUNT(*) FROM table_name alias_name
         Группировка строк:
             SELECT * FROM table_name GROUP BY column_name
         Сортировка строк:
@@ -67,10 +67,13 @@ $users = $query->fetch_all(MYSQLI_ASSOC); фетчим данные с запр�
         Условиия выборки:
             SELECT * FROM table_name WHERE column_name1 = 1 AND column_name2 = 2
             SELECT * FROM table_name WHERE column_name1 = 1 OR column_name2 = 2
+
+            SELECT * FROM table_name WHERE column_name1 = 1 OR (column_name2 = 2 AND column_name3 = 3)
             SELECT * FROM table_name WHERE (column_name1 = 1 OR column_name2 = 2) AND column_name3 = 3
+
             SELECT * FROM table_name WHERE column_name IN (1,2,3)
             SELECT * FROM table_name WHERE column_name NOT IN (1,2,3)
-            SELECT * FROM table_name WHERE column_name LIKE '% key_word %'
+            SELECT * FROM table_name WHERE column_name LIKE '%key_word%'
             SELECT * FROM table_name WHERE column_name LIKE 'key_word %' - должно начинаться этим словом
             SELECT * FROM table_name WHERE column_name LIKE '% key_word' - должно заканчиваться этим словом
             SELECT * FROM table_name WHERE column_name IS NULL
@@ -90,6 +93,10 @@ $users = $query->fetch_all(MYSQLI_ASSOC); фетчим данные с запр�
             SELECT column_name,(SELECT column_name FROM table_name WHERE id = 1) FROM table_name
             SELECT * FROM table_name LEFT JOIN (SELECT * FROM table_name) alias_name ON table_name.id = alias_name.id
             SELECT * FROM table_name WHERE column_name = (SELECT column_name FROM table_name WHERE id = 1)
+
+CREATE TABLE table_name (
+    id ...
+) ENGINE = MyISAM;
 
 Индексы:
     SHOW INDEXES FROM table_name
@@ -117,7 +124,6 @@ $users = $query->fetch_all(MYSQLI_ASSOC); фетчим данные с запр�
             LastName VARCHAR(20) NOT NULL,
             Phone VARCHAR(20) NOT NULL UNIQUE
         );
-
         CREATE TABLE Orders
         (
             Id INT PRIMARY KEY AUTO_INCREMENT,

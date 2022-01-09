@@ -49,7 +49,6 @@ $lubA = 2;
        10 Null - обозначающий пустоту
  */
 
-
 //1 bool
 $var = true;
 //var_dump($var);
@@ -229,8 +228,6 @@ $x = rand(1,5);
 /** Глобальные переменные */
 
 //$_SERVER
-
-//echo $_SERVER['REMOTE_ADDR'];
 
 //$_GET - данные HTTP get запросы
 
